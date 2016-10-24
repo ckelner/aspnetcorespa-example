@@ -19,6 +19,7 @@ namespace Aspnetcorespaexample
 
             var host = new WebHostBuilder()
                 .UseConfiguration(config)
+                .UseUrls("http://0.0.0.0:5000/")
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
