@@ -1,39 +1,38 @@
-# Welcome to ASP.NET Core
+# ASP.NET CORE SPA Example
 
-We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
+An example of an app generated with `yo aspnetcore-spa` and a slightly modified
+Dockerfile to use the `donet publish` dll rather than `dotnet run`.
 
-You've created a new ASP.NET Core project. [Learn what's new](https://go.microsoft.com/fwlink/?LinkId=518016)
+# Setup
 
-## This application consists of:
+These were the commands to setup the repo as described in [aspnet/JavaScriptServices](https://github.com/aspnet/JavaScriptServices/blob/dev/README.md#javascriptservices)
+and
+[blog.stevensanderson.com](http://blog.stevensanderson.com/2016/05/02/angular2-react-knockout-apps-on-aspnet-core/).
 
-*   Sample pages using ASP.NET Core MVC
-*   [Gulp](https://go.microsoft.com/fwlink/?LinkId=518007) and [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
-*   Theming using [Bootstrap](https://go.microsoft.com/fwlink/?LinkID=398939)
+- `npm install -g yo generator-aspnetcore-spa`
+- `npm install -g webpack`
+- `yo aspnetcore-spa`
+- `export ASPNETCORE_ENVIRONMENT=Production`
 
-## How to
+# What has been modified?
 
-*   [Add a Controller and View](https://go.microsoft.com/fwlink/?LinkID=398600)
-*   [Add an appsetting in config and access it in app.](https://go.microsoft.com/fwlink/?LinkID=699562)
-*   [Manage User Secrets using Secret Manager.](https://go.microsoft.com/fwlink/?LinkId=699315)
-*   [Use logging to log a message.](https://go.microsoft.com/fwlink/?LinkId=699316)
-*   [Add packages using NuGet.](https://go.microsoft.com/fwlink/?LinkId=699317)
-*   [Add client packages using Bower.](https://go.microsoft.com/fwlink/?LinkId=699318)
-*   [Target development, staging or production environment.](https://go.microsoft.com/fwlink/?LinkId=699319)
+See [this commit]().
 
-## Overview
+# How to run Docker container?
 
-*   [Conceptual overview of what is ASP.NET Core](https://go.microsoft.com/fwlink/?LinkId=518008)
-*   [Fundamentals of ASP.NET Core such as Startup and middleware.](https://go.microsoft.com/fwlink/?LinkId=699320)
-*   [Working with Data](https://go.microsoft.com/fwlink/?LinkId=398602)
-*   [Security](https://go.microsoft.com/fwlink/?LinkId=398603)
-*   [Client side development](https://go.microsoft.com/fwlink/?LinkID=699321)
-*   [Develop on different platforms](https://go.microsoft.com/fwlink/?LinkID=699322)
-*   [Read more on the documentation site](https://go.microsoft.com/fwlink/?LinkID=699323)
+To publish the app run:
 
-## Run & Deploy
+- `dotnet restore`
+- `dotnet publish -r debian.8-x64 -c release`
 
-*   [Run your app](https://go.microsoft.com/fwlink/?LinkID=517851)
-*   [Run tools such as EF migrations and more](https://go.microsoft.com/fwlink/?LinkID=517853)
-*   [Publish to Microsoft Azure Web Apps](https://go.microsoft.com/fwlink/?LinkID=398609)
+To try to run app in docker container:
 
-We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)
+- `docker build -t aspnetcorespa .`
+- `docker run -p 80:5000 aspnetcorespa`
+
+To connect to the docker container assuming using default machine:
+
+- `curl http://$(docker-machine ip default)`
+
+Or open your favorite web browser and connect to the ip address from
+`docker-machine ip default`
