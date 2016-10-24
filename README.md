@@ -16,7 +16,7 @@ and
 
 # What has been modified?
 
-See [this commit]().
+See [this commit](https://github.com/ckelner/aspnetcorespa-example/commit/93fb683db951c478e2e5f80e9cfbb1f9d28590e7).
 
 # How to run Docker container?
 
